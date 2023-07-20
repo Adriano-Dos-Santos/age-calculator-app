@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Age Calculator app</title>
+        <meta name="description" content="A simple calculator app">
+        <meta name="author" content="Adriano Dos Santos">
+        <link rel="icon" href="/favicon.ico">
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="stylesheet" href="styles.css" type="text/css">
+        <script type="text/javascript" defer src="main.js"></script>
+    </head>
+
+    <body>
+        <main>
+          <form id="myForm" action="">
+            <section class="birth-data-input">
+                <div class="day">
+                    <p class="day-title titles">day</p>
+                    <input id="day-input-field" name="" type="number" value="" placeholder="dd"/>
+                    <label for="day-input-field" id="day-input-label" class="day-label"></label>
+                </div>
+                <div class="month">
+                    <p class="month-title titles">month</p>
+                    <input id="month-input-field" name="" type="number" value="" placeholder="mm"/>
+                    <label for="month-input-field" id="month-input-label" class="month-label"></label>
+                </div>
+                <div class="year">
+                    <p class="year-title titles">year</p>
+                    <input id="year-input-field" name="" type="number" value="" placeholder="yyyy"/>
+                    <label for="year-input-field" id="year-input-label" class="year-label"></label>
+                </div>
+            </section>
+
+            <section class="divider">
+                <hr/>
+                <button id="confirm-button" type="submit">
+                <img class="icon" alt="purple arrow icon" src="assets/images/icon-arrow.svg"/>
+                </button>
+            </section>
+          </form>
+
+            <section class="age-data-output">
+                <p class="years-age">
+                    <span id="year-data-output" class="years-age-output">--</span>
+                    years
+                </p>
+                <p class="months-age">
+                    <span id="month-data-output" class="months-age-output">--</span>
+                    months
+                </p>
+                <p class="days-age">
+                    <span id="day-data-output" class="days-age-output">--</span>
+                    days
+                </p>
+            </section>
+        </main>
+
+    </body>
+</html>

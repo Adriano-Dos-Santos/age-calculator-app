@@ -1,0 +1,17 @@
+body {
+    background: #a98467;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.birth-data-input {
+    display: flex;
+    gap: 2em;
+}
+
+.age-data-output {
+    display: flex;
+
+}
