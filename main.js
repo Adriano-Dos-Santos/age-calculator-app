@@ -1,6 +1,6 @@
 const body = document.querySelector("body");
 const form = document.getElementById("myForm");
-const currentDay = 20;
+const currentDay = 25;
 const currentMonth = 07;
 const currentYear = 2023;
 
@@ -34,6 +34,10 @@ const birthYearInput = document.getElementById("year-input-field");
     dayInputLabel.textContent = "This field is required";
     dayInputLabel.style.color = "red";
     dayTitle.style.color = "red";
+  } else if (birthDayValue > 31 || birthDayValue < 1 || (birthMonthValue == currentMonth && birthDayValue > currentDay)) {
+    dayInputLabel.textContent = "Enter a valid day";
+    dayInputLabel.style.color = "red";
+    dayTitle.style.color = "red";
   } else {
     dayInputLabel.textContent = "";
     dayTitle.style.color = "white";
@@ -41,6 +45,10 @@ const birthYearInput = document.getElementById("year-input-field");
 
   if (birthMonthValue == "") {
     monthInputLabel.textContent = "This field is required";
+    monthInputLabel.style.color = "red";
+    monthTitle.style.color = "red";
+  } else if (birthMonthValue > 12 || birthMonthValue < 1 || (birthYearValue == currentYear && birthMonthValue > currentMonth)) {
+    monthInputLabel.textContent = "Enter a valid month";
     monthInputLabel.style.color = "red";
     monthTitle.style.color = "red";
   } else {
@@ -52,6 +60,11 @@ const birthYearInput = document.getElementById("year-input-field");
     yearInputLabel.textContent = "This field is required";
     yearInputLabel.style.color = "red";
     yearTitle.style.color = "red";
+  } else if (birthYearValue > currentYear) {
+    yearInputLabel.textContent = "Must be in the past";
+    yearInputLabel.style.color = "red";
+    yearTitle.style.color = "red";
+
   } else {
     yearInputLabel.textContent = "";
     yearTitle.style.color = "white";
