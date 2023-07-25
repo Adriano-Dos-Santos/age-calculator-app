@@ -1,9 +1,10 @@
 const body = document.querySelector("body");
 const form = document.getElementById("myForm");
-const currentDay = 25;
-const currentMonth = 07;
-const currentYear = 2023;
 
+const currentDate = new Date();
+const currentDay = currentDate.getDate();
+const currentMonth = currentDate.getMonth() + 1;
+const currentYear = currentDate.getFullYear();
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -30,11 +31,19 @@ const birthYearInput = document.getElementById("year-input-field");
   const monthTitle = document.getElementById("month-title");
   const yearTitle = document.getElementById("year-title");
 // Validation
+  //
+  function getDaysInMonth(month, year) {
+    const date = new Date(year, month - 1, 1);
+    date.setMonth(date.getMonth() + 1);
+    date.setDate(0);
+    return date.getDate();
+  }
+  //
   if (birthDayValue == "") {
     dayInputLabel.textContent = "This field is required";
     dayInputLabel.style.color = "red";
     dayTitle.style.color = "red";
-  } else if (birthDayValue > 31 || birthDayValue < 1 || (birthMonthValue == currentMonth && birthDayValue > currentDay)) {
+  } else if (birthDayValue > 31 || birthDayValue < 1 || (birthMonthValue == currentMonth && birthDayValue > currentDay) || (birthDayValue > getDaysInMonth(birthMonthValue, birthYearValue))) {
     dayInputLabel.textContent = "Enter a valid day";
     dayInputLabel.style.color = "red";
     dayTitle.style.color = "red";
