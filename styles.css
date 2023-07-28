@@ -105,7 +105,7 @@ textarea {
 /* ------------- */
 
 body {
-    background: var(--White);
+    background: var(--Off-white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,7 +113,10 @@ body {
     font-family: 'poppins', sans-serif;
 }
 main {
-    width: 55%;
+    width: 75%;
+    background: var(--White);
+    padding: 1em 2em 1em 2em;
+    border-radius: 15px 15px 80px 15px;
 }
 .birth-data-input {
     display: flex;
@@ -181,7 +184,13 @@ button:hover {
 }
 
 
+
+
 @media screen and (max-width: 550px) {
+
+    main {
+        border-radius: 15px 15px 50px 15px;
+    }
    .birth-data-input {
        flex-direction: column;
        align-items: start;
@@ -189,7 +198,7 @@ button:hover {
    }
 
    .birth-data-input input {
-       width: 150px;
+       width: calc(60px + 50%);
    }
 
    .age-data-output {
