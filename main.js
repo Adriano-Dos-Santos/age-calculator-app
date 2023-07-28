@@ -30,23 +30,27 @@ const birthYearInput = document.getElementById("year-input-field");
   const dayTitle = document.getElementById("day-title");
   const monthTitle = document.getElementById("month-title");
   const yearTitle = document.getElementById("year-title");
+  const red = "hsl(0, 100%, 67%)";
 // Validation
   //
   function getDaysInMonth(month, year) {
     const date = new Date(year, month - 1, 1);
     date.setMonth(date.getMonth() + 1);
     date.setDate(0);
+    console.log(`
+  days in ${month}/${year} are ${date.getDate()}
+`)
     return date.getDate();
   }
   //
   if (birthDayValue == "") {
     dayInputLabel.textContent = "This field is required";
-    dayInputLabel.style.color = "red";
-    dayTitle.style.color = "red";
+    dayInputLabel.style.color = red;
+    dayTitle.style.color = red;
   } else if (birthDayValue > 31 || birthDayValue < 1 || (birthMonthValue == currentMonth && birthDayValue > currentDay) || (birthDayValue > getDaysInMonth(birthMonthValue, birthYearValue))) {
     dayInputLabel.textContent = "Enter a valid day";
-    dayInputLabel.style.color = "red";
-    dayTitle.style.color = "red";
+    dayInputLabel.style.color = red;
+    dayTitle.style.color = red;
   } else {
     dayInputLabel.textContent = "";
     dayTitle.style.color = "white";
@@ -54,12 +58,12 @@ const birthYearInput = document.getElementById("year-input-field");
 
   if (birthMonthValue == "") {
     monthInputLabel.textContent = "This field is required";
-    monthInputLabel.style.color = "red";
-    monthTitle.style.color = "red";
+    monthInputLabel.style.color = red;
+    monthTitle.style.color = red;
   } else if (birthMonthValue > 12 || birthMonthValue < 1 || (birthYearValue == currentYear && birthMonthValue > currentMonth)) {
     monthInputLabel.textContent = "Enter a valid month";
-    monthInputLabel.style.color = "red";
-    monthTitle.style.color = "red";
+    monthInputLabel.style.color = red;
+    monthTitle.style.color = red;
   } else {
     monthInputLabel.textContent = "";
     monthTitle.style.color = "white";
@@ -67,12 +71,12 @@ const birthYearInput = document.getElementById("year-input-field");
 
   if (birthYearValue == "") {
     yearInputLabel.textContent = "This field is required";
-    yearInputLabel.style.color = "red";
-    yearTitle.style.color = "red";
+    yearInputLabel.style.color = red;
+    yearTitle.style.color = red;
   } else if (birthYearValue > currentYear) {
     yearInputLabel.textContent = "Must be in the past";
-    yearInputLabel.style.color = "red";
-    yearTitle.style.color = "red";
+    yearInputLabel.style.color = red;
+    yearTitle.style.color = red;
 
   } else {
     yearInputLabel.textContent = "";
