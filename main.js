@@ -53,7 +53,7 @@ const birthYearInput = document.getElementById("year-input-field");
     dayTitle.style.color = red;
   } else {
     dayInputLabel.textContent = "";
-    dayTitle.style.color = "white";
+    dayTitle.style.color = "black";
   };
 
   if (birthMonthValue == "") {
@@ -66,7 +66,7 @@ const birthYearInput = document.getElementById("year-input-field");
     monthTitle.style.color = red;
   } else {
     monthInputLabel.textContent = "";
-    monthTitle.style.color = "white";
+    monthTitle.style.color = "black";
   };
 
   if (birthYearValue == "") {
@@ -80,7 +80,7 @@ const birthYearInput = document.getElementById("year-input-field");
 
   } else {
     yearInputLabel.textContent = "";
-    yearTitle.style.color = "white";
+    yearTitle.style.color = "black";
   };
 
 
@@ -124,6 +124,35 @@ const birthYearInput = document.getElementById("year-input-field");
     };
 
   };
+
+  function calculateNextBirthdate(currentYear,currentMonth, currentDay, birthYearValue, birthMonthValue, birthDayValue) {
+    let birthdayYear = ;
+    let birthdayMonth;
+    let birthdayDay;
+    let nextbirthdayYear = currentYear + 1;
+    const oneYear = 12;
+    const oneMonth = 31;
+
+    if (currentMonth > birthMonthValue) {
+      nextbirthdayYear = birthdayYear - 1;
+      birthMonthValue = birthMonthValue + oneYear;
+      birthdayMonth = birthMonthValue - currentMonth;
+    } else {
+      birthdayMonth = birthMonthValue - currentMonth;
+    };
+
+    if (currentDay > birthDayValue) {
+      currentMonth = currentMonth - 1;
+      birthDayValue = birthDayValue + oneMonth;
+      birthdayDay = birthDayValue - currentDay;
+    } else {
+      birthdayDay = birthdayValue - currentDate
+    };
+
+
+  }
+
+
   const results = calculateAge(currentYear, currentMonth, currentDay, birthYearValue, birthMonthValue, birthDayValue);
 
   birthYearOutput.textContent = `${results.years}`;
