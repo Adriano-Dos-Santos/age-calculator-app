@@ -21,9 +21,9 @@ const birthYearInput = document.getElementById("year-input-field");
   const birthDayOutput = document.getElementById("day-data-output");
   const birthMonthOutput = document.getElementById("month-data-output");
   const birthYearOutput = document.getElementById("year-data-output");
- const birthDayValue = birthDayInput.value;
- const birthMonthValue = birthMonthInput.value;
- const birthYearValue = birthYearInput.value;
+  const birthDayValue = parseInt(birthDayInput.value,10);
+  const birthMonthValue = parseInt(birthMonthInput.value, 10);
+  const birthYearValue = parseInt(birthYearInput.value,10);
   const dayInputLabel = document.getElementById("day-input-label");
   const monthInputLabel = document.getElementById("month-input-label");
   const yearInputLabel = document.getElementById("year-input-label");
@@ -47,7 +47,7 @@ const birthYearInput = document.getElementById("year-input-field");
     dayInputLabel.textContent = "This field is required";
     dayInputLabel.style.color = red;
     dayTitle.style.color = red;
-  } else if (birthDayValue > 31 || birthDayValue < 1 || (birthMonthValue == currentMonth && birthDayValue > currentDay) || (birthDayValue > getDaysInMonth(birthMonthValue, birthYearValue))) {
+  } else if (birthDayValue > 31 || birthDayValue < 1 || /* (birthMonthValue == currentMonth && birthDayValue > currentDay) \\ */ (birthDayValue > getDaysInMonth(birthMonthValue, birthYearValue))) {
     dayInputLabel.textContent = "Enter a valid day";
     dayInputLabel.style.color = red;
     dayTitle.style.color = red;
@@ -125,38 +125,64 @@ const birthYearInput = document.getElementById("year-input-field");
 
   };
 
-  function calculateNextBirthdate(currentYear,currentMonth, currentDay, birthYearValue, birthMonthValue, birthDayValue) {
-    let birthdayYear = ;
-    let birthdayMonth;
-    let birthdayDay;
-    let nextbirthdayYear = currentYear + 1;
+  const calculateAgeResults = calculateAge(currentYear, currentMonth, currentDay, birthYearValue, birthMonthValue, birthDayValue);
+
+
+  birthYearOutput.textContent = `${calculateAgeResults.years}`;
+  birthMonthOutput.textContent = `${calculateAgeResults.months}`;
+  birthDayOutput.textContent = `${calculateAgeResults.days}`;
+
+
+  // extra info section
+
+  function calculateNextBirthday(nextBirthMonth, nextBirthDay, currentYear, currentMonth, currentDay) {
+    let years = 0;
+    let months;
+    let days;
     const oneYear = 12;
     const oneMonth = 31;
 
-    if (currentMonth > birthMonthValue) {
-      nextbirthdayYear = birthdayYear - 1;
-      birthMonthValue = birthMonthValue + oneYear;
-      birthdayMonth = birthMonthValue - currentMonth;
+
+// calculate days
+
+      console.log(typeof oneMonth);
+    if (nextBirthDay < currentDay) {
+      nextBirthMonth -= 1;
+      nextBirthDay = nextBirthDay + oneMonth;
+      console.log(typeof nextBirthDay);
+
+      days = nextBirthDay - currentDay;
     } else {
-      birthdayMonth = birthMonthValue - currentMonth;
+      days = nextBirthDay - currentDay;
     };
 
-    if (currentDay > birthDayValue) {
-      currentMonth = currentMonth - 1;
-      birthDayValue = birthDayValue + oneMonth;
-      birthdayDay = birthDayValue - currentDay;
+    //calculate Months
+
+    if (nextBirthMonth < currentMonth) {
+      currentYear = currentYear - 1;
+      nextBirthMonth = nextBirthMonth + oneYear;
+      months = nextBirthMonth - currentMonth;
     } else {
-      birthdayDay = birthdayValue - currentDate
+      months = nextBirthMonth - currentMonth;
     };
 
+    if (nextBirthMonth === currentMonth && nextBirthDay === currentDay) {
+      years = 1;
+    }
+    return {
+      days: days,
+      months: months,
+      years: years,
+    };
+  };
 
-  }
+  const daysToNextBirthday = document.getElementById("daysToNextBirthday");
+  const monthsToNextBirthday = document.getElementById("monthsToNextBirthday");
+  const daysToNextBirthdayValue = daysToNextBirthday.value;
+  const monthsToNextBirthdayValue = monthsToNextBirthday.value;
+  const calculateNextBirthdayResults = calculateNextBirthday(birthMonthValue,birthDayValue,currentYear,currentMonth,currentDay);
 
-
-  const results = calculateAge(currentYear, currentMonth, currentDay, birthYearValue, birthMonthValue, birthDayValue);
-
-  birthYearOutput.textContent = `${results.years}`;
-  birthMonthOutput.textContent = `${results.months}`;
-  birthDayOutput.textContent = `${results.days}`;
+  daysToNextBirthday.textContent = `${calculateNextBirthdayResults.days}`;
+  monthsToNextBirthday.textContent = `${calculateNextBirthdayResults.months}`;
 
 });
