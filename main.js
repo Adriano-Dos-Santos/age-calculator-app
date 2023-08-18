@@ -24,6 +24,7 @@ const birthYearInput = document.getElementById("year-input-field");
   const birthDayValue = parseInt(birthDayInput.value,10);
   const birthMonthValue = parseInt(birthMonthInput.value, 10);
   const birthYearValue = parseInt(birthYearInput.value,10);
+
   const dayInputLabel = document.getElementById("day-input-label");
   const monthInputLabel = document.getElementById("month-input-label");
   const yearInputLabel = document.getElementById("year-input-label");
@@ -37,17 +38,14 @@ const birthYearInput = document.getElementById("year-input-field");
     const date = new Date(year, month - 1, 1);
     date.setMonth(date.getMonth() + 1);
     date.setDate(0);
-    console.log(`
-  days in ${month}/${year} are ${date.getDate()}
-`)
     return date.getDate();
-  }
-  //
+  };
+  // validate day
   if (birthDayValue == "") {
     dayInputLabel.textContent = "This field is required";
     dayInputLabel.style.color = red;
     dayTitle.style.color = red;
-  } else if (birthDayValue > 31 || birthDayValue < 1 || /* (birthMonthValue == currentMonth && birthDayValue > currentDay) \\ */ (birthDayValue > getDaysInMonth(birthMonthValue, birthYearValue))) {
+  } else if (birthDayValue > 31 || birthDayValue < 1 || (birthDayValue > getDaysInMonth(birthMonthValue, birthYearValue))) {
     dayInputLabel.textContent = "Enter a valid day";
     dayInputLabel.style.color = red;
     dayTitle.style.color = red;
@@ -56,6 +54,7 @@ const birthYearInput = document.getElementById("year-input-field");
     dayTitle.style.color = "black";
   };
 
+  // validate month
   if (birthMonthValue == "") {
     monthInputLabel.textContent = "This field is required";
     monthInputLabel.style.color = red;
@@ -69,6 +68,7 @@ const birthYearInput = document.getElementById("year-input-field");
     monthTitle.style.color = "black";
   };
 
+  // validate year
   if (birthYearValue == "") {
     yearInputLabel.textContent = "This field is required";
     yearInputLabel.style.color = red;
@@ -83,7 +83,7 @@ const birthYearInput = document.getElementById("year-input-field");
     yearTitle.style.color = "black";
   };
 
-
+  //-------------------------------------------------------------------------
 
   function calculateAge(currentYear, currentMonth, currentDay, birthYear, birthMonth, birthDay) {
     if (!birthYear || !birthMonth || !birthDay) {
