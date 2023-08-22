@@ -2,16 +2,16 @@ const body = document.querySelector("body");
 const form = document.getElementById("myForm");
 
 const currentDate = new Date();
-const currentDay = currentDate.getDate();
-const currentMonth = currentDate.getMonth() + 1;
-const currentYear = currentDate.getFullYear();
+//const currentDay = currentDate.getDate();
+//const currentMonth = currentDate.getMonth() + 1;
+//const currentYear = currentDate.getFullYear();
+const currentDay = 31;
+const currentMonth = 12;
+const currentYear = 2024;
+
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  // reset inputs and styles everytime form is submited
-
-
- // ---------------------
 
 
 
@@ -32,6 +32,18 @@ const birthYearInput = document.getElementById("year-input-field");
   const monthTitle = document.getElementById("month-title");
   const yearTitle = document.getElementById("year-title");
   const red = "hsl(0, 100%, 67%)";
+
+  // reset inputs and styles everytime form is submited
+
+   birthYearOutput.textContent = '--';
+   birthMonthOutput.textContent = '--';
+   birthDayOutput.textContent = '--';
+
+   monthsToNextBirthday.textContent = '--';
+  daysToNextBirthday.textContent = '--';
+
+ // ---------------------
+
 // Validation
   //
   function getDaysInMonth(month, year) {
@@ -41,47 +53,63 @@ const birthYearInput = document.getElementById("year-input-field");
     return date.getDate();
   };
   // validate day
+  function validateBirthDay(birthDayValue) {
+
   if (birthDayValue == "") {
     dayInputLabel.textContent = "This field is required";
     dayInputLabel.style.color = red;
     dayTitle.style.color = red;
+    return false;
   } else if (birthDayValue > 31 || birthDayValue < 1 || (birthDayValue > getDaysInMonth(birthMonthValue, birthYearValue))) {
     dayInputLabel.textContent = "Enter a valid day";
     dayInputLabel.style.color = red;
     dayTitle.style.color = red;
+    return false;
   } else {
     dayInputLabel.textContent = "";
     dayTitle.style.color = "black";
+    return true;
+  };
+
   };
 
   // validate month
+  function validateMonth(birthMonthValue) {
   if (birthMonthValue == "") {
     monthInputLabel.textContent = "This field is required";
     monthInputLabel.style.color = red;
     monthTitle.style.color = red;
+    return false;
   } else if (birthMonthValue > 12 || birthMonthValue < 1 || (birthYearValue == currentYear && birthMonthValue > currentMonth)) {
     monthInputLabel.textContent = "Enter a valid month";
     monthInputLabel.style.color = red;
     monthTitle.style.color = red;
+    return false;
   } else {
     monthInputLabel.textContent = "";
     monthTitle.style.color = "black";
+    return true;
+  };
   };
 
   // validate year
+  function validateYear(birthYearValue) {
   if (birthYearValue == "") {
     yearInputLabel.textContent = "This field is required";
     yearInputLabel.style.color = red;
     yearTitle.style.color = red;
+    return false;
   } else if (birthYearValue > currentYear) {
     yearInputLabel.textContent = "Must be in the past";
     yearInputLabel.style.color = red;
     yearTitle.style.color = red;
-
+    return false;
   } else {
     yearInputLabel.textContent = "";
     yearTitle.style.color = "black";
+    return true;
   };
+  }
 
   //-------------------------------------------------------------------------
 
@@ -125,15 +153,8 @@ const birthYearInput = document.getElementById("year-input-field");
 
   };
 
-  const calculateAgeResults = calculateAge(currentYear, currentMonth, currentDay, birthYearValue, birthMonthValue, birthDayValue);
 
-
-  birthYearOutput.textContent = `${calculateAgeResults.years}`;
-  birthMonthOutput.textContent = `${calculateAgeResults.months}`;
-  birthDayOutput.textContent = `${calculateAgeResults.days}`;
-
-
-  // extra info section
+  //CALCULATE NEXT BIRTHDAY section
 
   function calculateNextBirthday(nextBirthMonth, nextBirthDay, currentYear, currentMonth, currentDay) {
     let years = 0;
@@ -176,6 +197,16 @@ const birthYearInput = document.getElementById("year-input-field");
     };
   };
 
+
+// Execute functions
+  if (validateBirthDay(birthDayValue) && validateMonth(birthMonthValue) && validateYear(birthYearValue)) {
+
+  const calculateAgeResults = calculateAge(currentYear, currentMonth, currentDay, birthYearValue, birthMonthValue, birthDayValue);
+
+  birthYearOutput.textContent = `${calculateAgeResults.years}`;
+  birthMonthOutput.textContent = `${calculateAgeResults.months}`;
+  birthDayOutput.textContent = `${calculateAgeResults.days}`;
+
   const daysToNextBirthday = document.getElementById("daysToNextBirthday");
   const monthsToNextBirthday = document.getElementById("monthsToNextBirthday");
   const daysToNextBirthdayValue = daysToNextBirthday.value;
@@ -184,5 +215,5 @@ const birthYearInput = document.getElementById("year-input-field");
 
   daysToNextBirthday.textContent = `${calculateNextBirthdayResults.days}`;
   monthsToNextBirthday.textContent = `${calculateNextBirthdayResults.months}`;
-
+  };
 });
