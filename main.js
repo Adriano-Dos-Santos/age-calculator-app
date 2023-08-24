@@ -33,7 +33,7 @@ const birthYearInput = document.getElementById("year-input-field");
   const red = "hsl(0, 100%, 67%)";
 
   // reset inputs and styles everytime form is submited
-
+  // HMMMMMMM
 
   //  birthYearOutput.textContent = '--';
   //  birthMonthOutput.textContent = '--';
