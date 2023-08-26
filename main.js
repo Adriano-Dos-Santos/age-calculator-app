@@ -32,7 +32,12 @@ const birthYearInput = document.getElementById("year-input-field");
   // Utilitary Variables
   const red = "hsl(0, 100%, 67%)";
 
+
+
   // reset inputs and styles everytime form is submited
+
+
+
 
 
   //  birthYearOutput.textContent = '--';
@@ -198,4 +203,5 @@ const birthYearInput = document.getElementById("year-input-field");
 
   daysToNextBirthday.textContent = `${calculateNextBirthdayResults.days}`;
   monthsToNextBirthday.textContent = `${calculateNextBirthdayResults.months}`;
+
 });
