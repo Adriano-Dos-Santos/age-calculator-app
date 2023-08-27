@@ -184,8 +184,23 @@ button:hover {
     color: var(--Purple);
 }
 
+.second-separator {
+    width: 80%;
+}
 
+.tillNextBirthday {
+    margin: 0.5em 0 0 0;
+    font-size: 1.3rem;
+}
 
+.nextBirthDay_Header {
+    font-size: 1.5rem;
+    color: black;
+    padding-bottom: 0.5em;
+}
+.nextBirthDay_Output {
+    color: var(--purple);
+}
 
 @media screen and (max-width: 550px) {
 
