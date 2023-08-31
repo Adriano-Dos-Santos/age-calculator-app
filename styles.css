@@ -151,6 +151,12 @@ main {
     color: var(--Light-red);
 }
 
+.input-field::-webkit-outer-spin-button,
+.input-field::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
 .divider {
     display: flex;
     align-items: center;
@@ -199,7 +205,7 @@ button:hover {
     padding-bottom: 0.5em;
 }
 .nextBirthDay_Output {
-    color: var(--purple);
+    color: var(--Purple);
 }
 
 @media screen and (max-width: 550px) {
