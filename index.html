@@ -1,71 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Age Calculator app</title>
-        <meta name="description" content="A simple calculator app">
-        <meta name="author" content="Adriano Dos Santos">
-        <link rel="icon" href="/favicon.ico">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-        <link rel="stylesheet" href="styles.css" type="text/css">
-        <script type="text/javascript" defer src="main.js"></script>
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Age Calculator app</title>
+    <meta name="description" content="A simple calculator app" />
+    <meta name="author" content="Adriano Dos Santos" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <script type="text/javascript" defer src="main.js"></script>
+  </head>
 
-    <body>
-        <main>
-          <form id="myForm" action="">
-            <section class="birth-data-input" ">
-                <div class="day input-container">
-                    <p class="day-title titles" id="day-title">day</p>
-                    <input id="day-input-field" name="" type="number" value="" placeholder="dd"/>
-                    <label for="day-input-field" id="day-input-label" class="day-label"></label>
-                </div>
-                <div class="month input-container">
-                    <p class="month-title titles" id="month-title"">month</p>
-                    <input id="month-input-field" name="" type="number" value="" placeholder="mm"/>
-                    <label for="month-input-field" id="month-input-label" class="month-label"></label>
-                </div>
-                <div class="year input-container">
-                    <p class="year-title titles" id="year-title"">year</p>
-                    <input id="year-input-field" name="" type="number" value="" placeholder="yyyy"/>
-                    <label for="year-input-field" id="year-input-label" class="year-label"></label>
-                </div>
-            </section>
+  <body>
+    <main>
+      <form id="myForm" action="">
+        <section class="birth-data-input">
+          <div class="day input-container">
+            <p class="day-title titles" id="day-title">day</p>
+            <input
+              class="input-field"
+              id="day-input-field"
+              name=""
+              type="number"
+              placeholder="dd"
+            />
+            <label
+              for="day-input-field"
+              id="day-input-label"
+              class="day-label"
+            ></label>
+          </div>
+          <div class="month input-container">
+            <p class="month-title titles" id="month-title">month</p>
+            <input
+              class="input-field"
+              id="month-input-field"
+              name=""
+              type="number"
+              placeholder="mm"
+            />
+            <label
+              for="month-input-field"
+              id="month-input-label"
+              class="month-label"
+            ></label>
+          </div>
+          <div class="year input-container">
+            <p class="year-title titles" id="year-title">year</p>
+            <input
+              class="input-field"
+              id="year-input-field"
+              name=""
+              type="number"
+              placeholder="yyyy"
+            />
+            <label
+              for="year-input-field"
+              id="year-input-label"
+              class="year-label"
+            ></label>
+          </div>
+        </section>
 
-            <section class="divider">
-                <hr/>
-                <button id="confirm-button" type="submit">
-                <img class="icon" alt="purple arrow icon" src="assets/images/icon-arrow.svg"/>
-                </button>
-            </section>
-          </form>
+        <section class="divider">
+          <hr />
+          <button id="confirm-button" class="button" type="submit">
+            <img
+              class="icon"
+              alt="purple arrow icon"
+              src="assets/images/icon-arrow.svg"
+            />
+          </button>
+        </section>
+      </form>
 
-            <section class="age-data-output">
-                <p class="years-age">
-                    <span id="year-data-output" class="age-output">--</span>
-                    years
-                </p>
-                <p class="months-age">
-                    <span id="month-data-output" class="age-output">--</span>
-                    months
-                </p>
-                <p class="days-age">
-                    <span id="day-data-output" class="age-output">--</span>
-                    days
-                </p>
-            </section>
-            <section class="extra-info-output">
-                <div class="tillNextBirthday">
-                    <h2>Time to next birthday</h2>
-                    <p>Months: <span id="monthsToNextBirthday">--</span></p>
-                    <p>Days: <span id="daysToNextBirthday">--</span></p>
-                </div>
+      <section class="age-data-output">
+        <div class="age-data-individual-container">
+          <p id="year-data-output" class="age-output">--</p>
+          <p class="years-age age-name">years</p>
+        </div>
+        <div class="age-data-individual-container">
+          <p id="month-data-output" class="age-output">--</p>
+          <p class="months-age age-name">months</p>
+        </div>
+        <div class="age-data-individual-container">
+          <p id="day-data-output" class="age-output">--</p>
+          <p class="days-age age-name">days</p>
+        </div>
+      </section>
+      <hr class="second-separator" />
+      <section class="extra-info-output">
+        <div class="tillNextBirthday">
+          <h2 class="nextBirthDay_Header">Time to next birthday</h2>
 
-            </section>
-        </main>
-    </body>
+          <div class="nextbirthday-individual-container">
+            <p class="nextBirthDay_Output" id="monthsToNextBirthday">--</p>
+            <p class="nextBirthDay_paragraph">months</p>
+          </div>
+
+          <div class="nextbirthday-individual-container">
+            <p class="nextBirthDay_Output" id="daysToNextBirthday">--</p>
+            <p class="nextBirthDay_paragraph">days</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
 <!-- TEST COMENT ON  -->
