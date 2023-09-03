@@ -54,6 +54,13 @@ const birthYearInput = document.getElementById("year-input-field");
 
 // Validation
   //
+
+  let dayValidationStats = false;
+  let monthValidationStats = false;
+  let yearValidationStats = false;
+
+  // Utilitary function
+
   function getDaysInMonth(month, year) {
     const date = new Date(year, month - 1, 1);
     date.setMonth(date.getMonth() + 1);
@@ -72,6 +79,7 @@ const birthYearInput = document.getElementById("year-input-field");
   } else {
     dayInputLabel.textContent = "";
     dayTitle.style.color = "black";
+    dayValidationStats = true;
   };
 
 
@@ -87,6 +95,7 @@ const birthYearInput = document.getElementById("year-input-field");
   } else {
     monthInputLabel.textContent = "";
     monthTitle.style.color = "black";
+    monthValidationStats = true;
   };
 
   // validate year
@@ -101,6 +110,7 @@ const birthYearInput = document.getElementById("year-input-field");
   } else {
     yearInputLabel.textContent = "";
     yearTitle.style.color = "black";
+    yearValidationStats = true;
   };
 
   //-------------------------------------------------------------------------
@@ -192,6 +202,8 @@ const birthYearInput = document.getElementById("year-input-field");
 
 // Execute functions
 
+  if (dayValidationStats && monthValidationStats && yearValidationStats) {
+
   const calculateAgeResults = calculateAge(currentYear, currentMonth, currentDay, birthYearValue, birthMonthValue, birthDayValue);
 
   birthYearOutput.textContent = `${calculateAgeResults.years}`;
@@ -215,5 +227,6 @@ const birthYearInput = document.getElementById("year-input-field");
     nextBirthdayOutputElements[i].classList.add('animate');
 
   }
+}
 
 });
