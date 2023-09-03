@@ -22,6 +22,7 @@ const birthYearInput = document.getElementById("year-input-field");
   const birthDayOutput = document.getElementById("day-data-output");
   const birthMonthOutput = document.getElementById("month-data-output");
   const birthYearOutput = document.getElementById("year-data-output");
+
   // Validation valiables
   const dayInputLabel = document.getElementById("day-input-label");
   const monthInputLabel = document.getElementById("month-input-label");
@@ -32,7 +33,9 @@ const birthYearInput = document.getElementById("year-input-field");
   // Utilitary Variables
   const red = "hsl(0, 100%, 67%)";
 
-
+  // Elements to animate
+  const ageOutputElements = document.getElementsByClassName('age-output');
+  const nextBirthdayOutputElements = document.getElementsByClassName('nextBirthDay_Output');
 
   // reset inputs and styles everytime form is submited
 
@@ -203,5 +206,14 @@ const birthYearInput = document.getElementById("year-input-field");
 
   daysToNextBirthday.textContent = `${calculateNextBirthdayResults.days}`;
   monthsToNextBirthday.textContent = `${calculateNextBirthdayResults.months}`;
+
+  // Animation
+  for (let i = 0; i < ageOutputElements.length; i++) {
+    ageOutputElements[i].classList.add('animate');
+  }
+  for (let i = 0; i < nextBirthdayOutputElements.length; i++) {
+    nextBirthdayOutputElements[i].classList.add('animate');
+
+  }
 
 });

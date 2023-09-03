@@ -178,6 +178,11 @@ button:hover {
     background: var(--Purple);
 }
 
+button:active {
+      transform: translate(0px, 5px);
+
+}
+
 .age-data-output {
     display: flex;
     flex-direction: column;
@@ -186,10 +191,14 @@ button:hover {
     font-weight: 800;
 }
 
+.age-data-individual-container {
+    display: flex;
+    gap: 0.2em;
+}
+
 .age-output {
     color: var(--Purple);
 }
-
 .second-separator {
     width: 80%;
 }
@@ -202,12 +211,45 @@ button:hover {
 .nextBirthDay_Header {
     font-size: 1.5rem;
     color: black;
-    padding-bottom: 0.5em;
+    padding: 0 0 0.5em 0.4em;
 }
+.nextbirthday-individual-container {
+    padding: 0 0 0 0.3em;
+    display: flex;
+    gap: 0.3em;
+}
+/* ANIMATIONS */
+
 .nextBirthDay_Output {
     color: var(--Purple);
 }
 
+
+.animate {
+    animation: slidein 1s;
+}
+
+
+@keyframes slidein {
+    from {
+        transform: translatex(-15px);
+        color: transparent;
+
+    }
+    15% {
+
+        color: white;
+    }
+ 50% {
+     transform: translatex(3px);
+  }
+
+    to {
+       color: var(--Purple);
+    }
+}
+
+/* RESPONSIVE */
 @media screen and (max-width: 550px) {
 
     main {
@@ -226,5 +268,12 @@ button:hover {
    .age-data-output {
        font-size: calc(0.7rem + 6vw);
    }
+   .nextBirthDay_Header {
+       font-size: calc(0.3rem + 3vw);
+
+   }
 }
 
+* {
+    /* outline: 1px solid red; */
+}
