@@ -1,3 +1,10 @@
+// vercel analytics
+
+import { inject } from '@vercel/analytics';
+
+inject();
+//
+
 const body = document.querySelector("body");
 const form = document.getElementById("myForm");
 
