@@ -1,10 +1,3 @@
-// vercel analytics
-
-import { inject } from '@vercel/analytics';
-
-inject();
-//
-
 const body = document.querySelector("body");
 const form = document.getElementById("myForm");
 
@@ -45,7 +38,6 @@ const birthYearInput = document.getElementById("year-input-field");
   const nextBirthdayOutputElements = document.getElementsByClassName('nextBirthDay_Output');
 
   // reset inputs and styles everytime form is submited
-  // HMMMMMMM
 
 
 
